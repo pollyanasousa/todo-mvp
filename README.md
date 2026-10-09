@@ -64,4 +64,4 @@ Depois abra o endereço que o comando mostrar (algo como `http://localhost:3000`
 
 O app está publicado no GitHub Pages:
 
-**LINK AQUI**
+**[https://pollyanasousa.github.io/todo-mvp/](https://pollyanasousa.github.io/todo-mvp/)**
