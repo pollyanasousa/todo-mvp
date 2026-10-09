@@ -1,0 +1,87 @@
+/* ============================================================
+   animations.css — Animações do app
+   Slide in ao adicionar, fade out ao remover e check animado.
+   Respeita prefers-reduced-motion (acessibilidade).
+   ============================================================ */
+
+/* ---------- Slide in: nova tarefa entra na lista ---------- */
+@keyframes slide-in {
+  from {
+    opacity: 0;
+    transform: translateY(-16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Aplicado ao item recém-adicionado (remover a classe após animar) */
+.todo-item.is-entering {
+  animation: slide-in var(--duration-slow) var(--easing-out) both;
+}
+
+/* ---------- Fade out: tarefa sai da lista ---------- */
+@keyframes fade-out {
+  from {
+    opacity: 1;
+    transform: translateX(0);
+  }
+  to {
+    opacity: 0;
+    transform: translateX(24px);
+  }
+}
+
+/* Aplicado antes da remoção do DOM (aguardar o fim via animationend) */
+.todo-item.is-leaving {
+  animation: fade-out var(--duration-slow) ease-in both;
+}
+
+/* ---------- Check animado: pulso ao concluir tarefa ---------- */
+@keyframes check-pop {
+  0% {
+    transform: rotate(45deg) scale(0);
+  }
+  60% {
+    /* Efeito spring: leve ultrapassagem do tamanho final */
+    transform: rotate(45deg) scale(1.2);
+  }
+  100% {
+    transform: rotate(45deg) scale(1);
+  }
+}
+
+/* A marca de check cresce com efeito de mola */
+.todo-checkbox:checked + .checkbox-visual::after {
+  animation: check-pop var(--duration-base) var(--easing-out) both;
+}
+
+/* Fundo da checkbox também "pulsa" ao ser marcada */
+@keyframes checkbox-fill {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+.todo-checkbox:checked + .checkbox-visual {
+  animation: checkbox-fill var(--duration-base) var(--easing-out);
+}
+
+/* ---------- Acessibilidade: reduzir movimento ---------- */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

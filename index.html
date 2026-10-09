@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="MVP de Lista de Tarefas — HTML, CSS e JavaScript vanilla, mobile-first e acessível.">
+  <title>Minhas Tarefas — Todo MVP</title>
+
+  <!-- Ordem: tokens -> componentes -> animações -->
+  <link rel="stylesheet" href="styles/design-system.css">
+  <link rel="stylesheet" href="styles/components.css">
+  <link rel="stylesheet" href="styles/animations.css">
+</head>
+<body>
+  <div class="app">
+    <!-- Header: título, data de hoje e contador de tarefas ativas -->
+    <header class="app-header">
+      <div class="app-header-text">
+        <h1 class="app-title">Minhas Tarefas</h1>
+        <p class="app-date" id="app-date"></p>
+      </div>
+      <p class="app-counter" id="active-count" aria-live="polite">0 ativas</p>
+    </header>
+
+    <main>
+      <!-- Métricas rápidas: Total, Pendentes e Feitas -->
+      <section class="stats-grid" aria-label="Resumo de tarefas">
+        <div class="stat-card">
+          <span class="stat-value" id="stat-total">0</span>
+          <span class="stat-label">Total</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value stat-value--primary" id="stat-pendentes">0</span>
+          <span class="stat-label">Pendentes</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-value stat-value--success" id="stat-feitas">0</span>
+          <span class="stat-label">Feitas</span>
+        </div>
+      </section>
+
+      <!-- Card "Progresso do Dia" com barra de % concluídas -->
+      <section class="progress-card" aria-labelledby="progress-title">
+        <div class="progress-header">
+          <h2 class="progress-title" id="progress-title">Progresso do Dia</h2>
+          <span class="progress-value" id="progress-value">0%</span>
+        </div>
+        <div
+          class="progress-track"
+          id="progress-track"
+          role="progressbar"
+          aria-labelledby="progress-title"
+          aria-valuemin="0"
+          aria-valuemax="100"
+          aria-valuenow="0"
+        >
+          <div class="progress-fill" id="progress-fill"></div>
+        </div>
+      </section>
+
+      <!-- Input de nova tarefa: Enter (submit implícito) ou botão "+" -->
+      <form class="todo-input-form" id="todo-form" novalidate>
+        <label class="visually-hidden" for="todo-input">Nova tarefa</label>
+        <input
+          class="todo-input"
+          id="todo-input"
+          name="tarefa"
+          type="text"
+          placeholder="Adicionar nova tarefa..."
+          autocomplete="off"
+          maxlength="200"
+        >
+        <button class="todo-add-btn" type="submit">
+          <span class="icon-plus" aria-hidden="true">+</span>
+          <span class="visually-hidden">Adicionar tarefa</span>
+        </button>
+      </form>
+
+      <!-- Lista de tarefas: os itens são criados via JS com event delegation -->
+      <ul class="todo-list" id="todo-list"></ul>
+
+      <!-- Estado vazio ilustrado (exibido via atributo hidden) -->
+      <div class="empty-state" id="empty-state" hidden>
+        <p class="empty-state-text" id="empty-state-text">Nenhuma tarefa por aqui.</p>
+      </div>
+    </main>
+
+    <!-- Footer: filtros Todas/Ativas/Completadas + botão destrutivo -->
+    <footer class="app-footer" style="flex-wrap: wrap; gap: var(--space-sm);">
+      <div class="todo-filters" id="todo-filters" role="group" aria-label="Filtrar tarefas">
+        <button type="button" class="filter-btn is-active" data-filter="todas" aria-pressed="true">
+          <span class="filter-label">Todas</span> <span class="filter-count" data-count="todas">0</span>
+        </button>
+        <button type="button" class="filter-btn" data-filter="ativas" aria-pressed="false">
+          <span class="filter-label">Ativas</span> <span class="filter-count" data-count="ativas">0</span>
+        </button>
+        <button type="button" class="filter-btn" data-filter="completadas" aria-pressed="false">
+          <span class="filter-label">Completadas</span> <span class="filter-count" data-count="completadas">0</span>
+        </button>
+      </div>
+      <button type="button" class="btn-destructive" id="clear-completed" disabled>Limpar completadas</button>
+    </footer>
+  </div>
+
+  <!-- Ponto de entrada ES6+ (type="module"; exige servidor local) -->
+  <script type="module" src="js/app.js"></script>
+</body>
+</html>

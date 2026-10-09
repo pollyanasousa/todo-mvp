@@ -1,0 +1,459 @@
+/* ============================================================
+   components.css — Componentes da Lista de Tarefas
+   Depende de styles/design-system.css (tokens)
+   Mobile-first: estilos base para telas pequenas;
+   media query (min-width: 768px) apenas para centralizar.
+   ============================================================ */
+
+/* ---------- Layout do app ---------- */
+.app {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: var(--space-lg);
+}
+
+@media (min-width: 768px) {
+  /* Em telas maiores, centraliza a lista com largura máxima ~640px */
+  .app {
+    max-width: 640px;
+    padding: var(--space-2xl) var(--space-lg);
+  }
+}
+
+/* ---------- Header: título + contador de ativas ---------- */
+.app-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.app-title {
+  font-size: var(--font-size-title);
+  line-height: var(--line-height-title);
+  font-weight: 700;
+}
+
+/* Coluna do header: título + data de hoje */
+.app-header-text {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
+  min-width: 0;
+}
+
+/* Data de hoje formatada (ex.: "Sexta-feira, 09 de outubro de 2026") */
+.app-date {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Cards de contagem: Total / Pendentes / Feitas ---------- */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.stat-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-xs);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-md) var(--space-sm);
+  box-shadow: var(--shadow-1);
+  text-align: center;
+}
+
+.stat-value {
+  font-size: var(--font-size-title);
+  line-height: 1.2;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.stat-value--primary {
+  color: var(--color-primary);
+}
+
+.stat-value--success {
+  color: var(--color-success);
+}
+
+.stat-label {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  color: var(--color-text-secondary);
+}
+
+/* ---------- Card "Progresso do Dia" com barra ---------- */
+.progress-card {
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-lg);
+  box-shadow: var(--shadow-1);
+  margin-bottom: var(--space-lg);
+}
+
+.progress-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-sm);
+}
+
+.progress-title {
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  font-weight: 600;
+}
+
+.progress-value {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  font-weight: 700;
+  color: var(--color-primary);
+}
+
+/* Trilho da barra de progresso */
+.progress-track {
+  height: 8px;
+  background-color: var(--color-border);
+  border-radius: var(--radius-pill);
+  overflow: hidden;
+}
+
+/* Preenchimento verde de sucesso (% concluídas) */
+.progress-fill {
+  height: 100%;
+  width: 0%;
+  background-color: var(--color-success);
+  border-radius: var(--radius-pill);
+  transition: width var(--duration-slow) var(--easing-out);
+}
+
+/* Badge do contador de tarefas ativas */
+.app-counter {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+  font-weight: 600;
+  color: var(--color-primary);
+  background-color: #dbeafe;
+  padding: var(--space-xs) var(--space-sm);
+  border-radius: var(--radius-pill);
+  white-space: nowrap;
+}
+
+/* ---------- Input de nova tarefa + botão "+" ---------- */
+.todo-input-form {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+}
+
+.todo-input {
+  flex: 1;
+  min-width: 0;
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-input);
+  padding: var(--space-md) var(--space-lg);
+  font-size: var(--font-size-body);
+  color: var(--color-text);
+}
+
+.todo-input::placeholder {
+  color: var(--color-placeholder);
+}
+
+/* Estado :focus do input */
+.todo-input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-focus-ring);
+}
+
+/* Botão de adicionar com ícone "+" */
+.todo-add-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-xs);
+  min-width: 48px;
+  height: 48px;
+  padding: 0 var(--space-md);
+  background-color: var(--color-primary);
+  color: var(--color-surface);
+  border-radius: var(--radius-input);
+  font-size: var(--font-size-body);
+  font-weight: 600;
+  box-shadow: var(--shadow-primary);
+  transition: background-color var(--duration-fast) ease,
+              transform var(--duration-fast) ease;
+}
+
+.todo-add-btn:hover {
+  background-color: var(--color-primary-hover);
+}
+
+.todo-add-btn:active {
+  /* Feedback tátil de pressão */
+  transform: scale(0.98);
+}
+
+/* Ícone "+" dentro do botão */
+.todo-add-btn .icon-plus {
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+/* ---------- Botões de filtro (Todas / Ativas / Completadas) ---------- */
+.todo-filters {
+  display: flex;
+  gap: var(--space-sm);
+  margin-bottom: var(--space-lg);
+  overflow-x: auto;
+}
+
+.filter-btn {
+  padding: var(--space-sm) var(--space-lg);
+  background-color: var(--color-surface);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  white-space: nowrap;
+  transition: background-color var(--duration-fast) ease,
+              color var(--duration-fast) ease,
+              border-color var(--duration-fast) ease;
+}
+
+.filter-btn:hover {
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+}
+
+/* Estado ativo do filtro */
+.filter-btn.is-active,
+.filter-btn[aria-pressed="true"] {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: var(--color-surface);
+}
+
+/* Contagem dentro do chip de filtro (ex.: "Todas 4") */
+.filter-label {
+  white-space: nowrap;
+}
+
+.filter-count {
+  display: inline-block;
+  min-width: 20px;
+  padding: 0 var(--space-xs);
+  background-color: var(--color-bg);
+  color: var(--color-text-secondary);
+  border-radius: var(--radius-pill);
+  font-size: var(--font-size-small);
+  line-height: 18px;
+  font-weight: 700;
+  text-align: center;
+}
+
+/* Filtro ativo: contagem em contraste sobre o azul */
+.filter-btn.is-active .filter-count,
+.filter-btn[aria-pressed="true"] .filter-count {
+  background-color: rgba(255, 255, 255, 0.24);
+  color: var(--color-surface);
+}
+
+/* ---------- Lista de tarefas ---------- */
+.todo-list {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+  margin-bottom: var(--space-lg);
+}
+
+/* ---------- Item da lista (cartão) ---------- */
+.todo-item {
+  display: flex;
+  align-items: center;
+  gap: var(--space-md);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-card);
+  padding: var(--space-md) var(--space-lg);
+  box-shadow: var(--shadow-1);
+  transition: background-color var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease;
+}
+
+/* Estado :hover do item */
+.todo-item:hover {
+  background-color: #f9fafb;
+  box-shadow: var(--shadow-2);
+}
+
+/* Checkbox customizada: esconde a nativa, usa a caixa .checkbox-visual */
+.todo-item .todo-checkbox {
+  position: absolute;
+  opacity: 0;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  cursor: pointer;
+}
+
+.todo-item .checkbox-visual {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border: 2px solid var(--color-control-border);
+  background-color: var(--color-surface);
+  border-radius: var(--radius-checkbox);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  /* Área de toque: 44px sem ocupar espaço visual */
+  box-shadow: 0 0 0 11px transparent;
+  transition: background-color var(--duration-base) ease,
+              border-color var(--duration-base) ease;
+}
+
+/* Marca de check (SVG via ::after com bordas) */
+.checkbox-visual::after {
+  content: "";
+  width: 5px;
+  height: 10px;
+  border: solid var(--color-surface);
+  border-width: 0 2px 2px 0;
+  transform: rotate(45deg) scale(0);
+  transition: transform var(--duration-base) var(--easing-out);
+}
+
+/* Estado marcado: fundo verde de sucesso + check branco */
+.todo-checkbox:checked + .checkbox-visual {
+  background-color: var(--color-success);
+  border-color: var(--color-success);
+}
+
+.todo-checkbox:checked + .checkbox-visual::after {
+  transform: rotate(45deg) scale(1);
+}
+
+/* Foco visível na checkbox */
+.todo-checkbox:focus-visible + .checkbox-visual {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+/* Texto da tarefa */
+.todo-text {
+  flex: 1;
+  min-width: 0;
+  font-size: var(--font-size-body);
+  overflow-wrap: break-word;
+}
+
+/* Tarefa concluída: riscada e esmaecida */
+.todo-item.is-completed .todo-text {
+  color: var(--color-text-muted);
+  text-decoration: line-through;
+}
+
+/* ---------- Botão deletar (destrutivo sutil) ---------- */
+.todo-delete-btn {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  color: var(--color-destructive);
+  border-radius: var(--radius-checkbox);
+  font-size: 20px;
+  line-height: 1;
+  transition: background-color var(--duration-fast) ease;
+}
+
+.todo-delete-btn:hover {
+  background-color: #fee2e2;
+}
+
+.todo-delete-btn:focus-visible {
+  outline: 2px solid var(--color-destructive);
+  outline-offset: 2px;
+}
+
+/* ---------- Footer: botão destrutivo "Limpar completadas" ---------- */
+.app-footer {
+  display: flex;
+  justify-content: center;
+  padding-top: var(--space-sm);
+  border-top: 1px solid var(--color-border);
+}
+
+/* Botão destrutivo (variante sólida, usada em ações que alteram a lista) */
+.btn-destructive {
+  padding: var(--space-md) var(--space-xl);
+  background-color: var(--color-destructive);
+  color: var(--color-surface);
+  border-radius: var(--radius-input);
+  font-size: var(--font-size-small);
+  font-weight: 600;
+  transition: background-color var(--duration-fast) ease,
+              transform var(--duration-fast) ease;
+}
+
+.btn-destructive:hover {
+  background-color: #b91c1c;
+}
+
+.btn-destructive:active {
+  transform: scale(0.98);
+}
+
+.btn-destructive:focus-visible {
+  outline: 2px solid var(--color-destructive);
+  outline-offset: 2px;
+}
+
+/* Variante fantasma (ícone/lixeira em texto, estilo ghost) */
+.btn-destructive.is-ghost {
+  background-color: transparent;
+  color: var(--color-destructive);
+}
+
+.btn-destructive.is-ghost:hover {
+  background-color: #fee2e2;
+}
+
+/* Desabilitado: nenhuma tarefa concluída para limpar */
+.btn-destructive:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* ---------- Estado vazio ilustrado ---------- */
+.empty-state {
+  text-align: center;
+  padding: var(--space-2xl) var(--space-lg);
+  color: var(--color-text-secondary);
+}
+
+.empty-state .empty-state-text {
+  font-size: var(--font-size-small);
+  line-height: var(--line-height-small);
+}

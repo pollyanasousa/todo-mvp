@@ -1,0 +1,163 @@
+{
+  "meta": {
+    "projeto": "todo-mvp",
+    "descricao": "MVP de Lista de Tarefas em HTML, CSS e JavaScript vanilla. Protótipo de tela única, mobile-first, gerado via MCP Stitch.",
+    "fonte": "MCP Stitch (https://stitch.googleapis.com/mcp)",
+    "data": "2026-10-09"
+  },
+  "stitch": {
+    "projectId": "11465442286709292708",
+    "screenId": "2c03340567164b12aaae02ad7be672a2",
+    "screenName": "projects/11465442286709292708/screens/2c03340567164b12aaae02ad7be672a2",
+    "titulo": "Minhas Tarefas",
+    "tipoDispositivo": "MOBILE",
+    "tipoTela": "DESIGN",
+    "largura": 780,
+    "altura": 1768,
+    "screenshotUrl": "https://lh3.googleusercontent.com/aida/AEtjO1UMEzeyJpuHPwU_ac0fYNjw_BhmioRKQN2bUlvKsQ0s2lhFqC6sgJLjJCeY-s_6iUIUPNId6Uo_w_6dyaOAiBUKobjsjrV1Xa-cJRUMEPVJ3ZuYMwVycZNfCLYQo8NNQ2XwQCVjRlqNoclmr7NCDS7w-ZiHtmc08t0M-KwP0vPDNvyv_h4cInZ-KHa99hcUnWW8xELICBLt3PkkCLt_QpressZf8mHZHOn7GRE_UwGIUoe2g_lYcjm0AcQv",
+    "htmlCodeUrl": "https://contribution.usercontent.google.com/download?c=CgthaWRhX2NvZGVmeBJ8Eh1hcHBfY29tcGFuaW9uX2dlbmVyYXRlZF9maWxlcxpbCiVodG1sXzIyNGU2ZDlhZTdhZjQ5OTc5OGJhM2RhMDYwMjY1ZTg4EgsSBxC6s4f-_RUYAZIBJAoKcHJvamVjdF9pZBIWQhQxMTQ2NTQ0MjI4NjcwOTI5MjcwOA&filename=&opi=96797242",
+    "designSystemId": "assets/f10317a411bf424a991409011b611dee",
+    "designSystemNome": "Clareza Produtividade"
+  },
+  "layout": {
+    "estrutura": "Coluna única, mobile-first, centralizada; margens laterais de 1rem (16px).",
+    "ordemVertical": [
+      "header",
+      "inputNovaTarefa",
+      "filtros",
+      "listaDeTarefas",
+      "footer"
+    ],
+    "header": {
+      "titulo": "Minhas Tarefas",
+      "contador": "3 ativas",
+      "descricao": "Título da tela + contador de tarefas ativas (badge sutil). Pode incluir métricas rápidas (Total, Pendentes, Feitas)."
+    },
+    "inputNovaTarefa": {
+      "placeholder": "Adicionar nova tarefa...",
+      "icone": "+",
+      "descricao": "Campo arredondado com botão de adicionar azul em destaque contendo ícone de mais."
+    },
+    "filtros": {
+      "opcoes": ["Todas", "Ativas", "Completadas"],
+      "ativoPadrao": "Todas",
+      "descricao": "Chips em formato pílula; o filtro ativo recebe fundo azul primário e texto branco."
+    },
+    "listaDeTarefas": {
+      "itensExemplo": [
+        { "texto": "Revisar apresentação trimestral", "concluida": false },
+        { "texto": "Comprar café e suprimentos", "concluida": false },
+        { "texto": "Enviar relatório financeiro", "concluida": true },
+        { "texto": "Agendar alinhamento com equipe de Design", "concluida": false }
+      ],
+      "descricao": "Cartões brancos com cantos arredondados e sombra sutil. Cada item tem checkbox customizada à esquerda, texto no centro e botão destrutivo (ícone de lixeira vermelho) à direita.",
+      "itemConcluido": "Texto esmaecido e riscado (line-through); checkbox preenchida em verde com check branco."
+    },
+    "footer": {
+      "acao": "Limpar completadas",
+      "descricao": "Botão de texto/ghost em vermelho destrutivo, alinhado à base."
+    }
+  },
+  "designTokens": {
+    "cores": {
+      "primaria": "#2563EB",
+      "primariaHover": "#1D4ED8",
+      "fundo": "#F3F4F6",
+      "superficie": "#FFFFFF",
+      "sucesso": "#16A34A",
+      "destrutivo": "#DC2626",
+      "textoPrimario": "#1F2937",
+      "textoSecundario": "#6B7280",
+      "textoInativo": "#9CA3AF",
+      "borda": "#E5E7EB",
+      "bordaControle": "#D1D5DB",
+      "placeholder": "#9CA3AF"
+    },
+    "tipografia": {
+      "familia": "Inter, sans-serif",
+      "niveis": {
+        "titulo": { "fontSize": "26px", "fontWeight": "700", "lineHeight": "34px" },
+        "corpo": { "fontSize": "16px", "fontWeight": "400", "lineHeight": "24px" },
+        "pequeno": { "fontSize": "13px", "fontWeight": "400", "lineHeight": "18px" }
+      }
+    },
+    "espacamento": {
+      "base": "4px",
+      "escala": {
+        "xs": "4px",
+        "sm": "8px",
+        "md": "12px",
+        "lg": "16px",
+        "xl": "24px",
+        "2xl": "32px"
+      }
+    },
+    "arredondamento": {
+      "input": "12px",
+      "cartao": "14px",
+      "checkbox": "6px",
+      "pilula": "9999px"
+    },
+    "sombras": {
+      "nivel1": "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+      "nivel2": "0 4px 6px -1px rgba(0, 0, 0, 0.08), 0 2px 4px -2px rgba(0, 0, 0, 0.04)",
+      "nivel3": "0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.05)",
+      "botaoPrimario": "0 4px 14px 0 rgba(37, 99, 235, 0.35)"
+    }
+  },
+  "componentes": {
+    "input": {
+      "fundo": "#FFFFFF",
+      "borda": "1px solid #E5E7EB",
+      "raio": "12px",
+      "padding": "12px 16px",
+      "estados": {
+        "foco": "borda #2563EB + anel 3px rgba(37, 99, 235, 0.15)"
+      }
+    },
+    "botaoAdicionar": {
+      "fundo": "#2563EB",
+      "texto": "#FFFFFF",
+      "icone": "+",
+      "raio": "12px",
+      "altura": "48px"
+    },
+    "checkbox": {
+      "desmarcada": "22x22px, borda 2px #D1D5DB, fundo #FFFFFF, raio 6px",
+      "marcada": "fundo #16A34A, check branco, animação de escala (spring)",
+      "areaToque": "44x44px"
+    },
+    "cartaoTarefa": {
+      "fundo": "#FFFFFF",
+      "borda": "1px solid #E5E7EB",
+      "raio": "14px",
+      "padding": "12px 16px",
+      "sombra": "nivel1"
+    },
+    "chipFiltro": {
+      "inativo": "fundo #FFFFFF, texto #6B7280, borda 1px #E5E7EB, raio 9999px, padding 6px 14px",
+      "ativo": "fundo #2563EB, texto #FFFFFF, borda 1px #2563EB"
+    },
+    "botaoDestrutivo": {
+      "varianteSolida": "fundo #DC2626, texto #FFFFFF",
+      "varianteSutil": "fundo transparente, texto #DC2626"
+    }
+  },
+  "microinteracoes": [
+    "Check animado ao concluir tarefa (transição de escala com efeito spring).",
+    "Feedback tátil de pressão em botões (scale(0.98)).",
+    "Realce de foco visível (focus ring) em todos os controles."
+  ],
+  "acessibilidade": {
+    "contraste": "WCAG AA",
+    "focusRings": "Anel de 2-3px em #2563EB com offset.",
+    "labels": "Labels semânticos em todos os controles de formulário.",
+    "areaToque": "Mínimo de 44x44px para alvos interativos."
+  },
+  "notasImplementacao": [
+    "Mobile-first; em telas > 768px centralizar a lista com largura máxima de ~640px.",
+    "Usar event delegation (um listener no container da lista).",
+    "Estado persistido em localStorage; array de { id, text, completed, createdAt }.",
+    "Extra opcional (pós-MVP): modal de criação com data e prioridade, dark mode, drag and drop."
+  ]
+}
